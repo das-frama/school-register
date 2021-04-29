@@ -12,6 +12,11 @@ body {
   font-size: .875rem;
 }
 
+.table th {
+  text-align: center;
+  vertical-align: middle;
+}
+
 .form-signin {
   width: 100%;
   max-width: 330px;

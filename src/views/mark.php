@@ -5,7 +5,7 @@ $title = 'Оценки';
 
 <h2>Оценки</h2>
 
-<table class="table table-striped table-bordered mt-4">
+<table class="table table-sm table-striped table-bordered mt-4">
     <thead>
         <tr>
             <th>#</th>

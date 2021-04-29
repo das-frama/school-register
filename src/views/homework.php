@@ -5,7 +5,7 @@ $title = 'Домашнее задание';
 
 <h2>Домашнее задание</h2>
 
-<table class="table table-striped table-bordered mt-4">
+<table class="table table-sm table-striped table-bordered mt-4">
     <thead>
         <tr>
             <th>#</th>
