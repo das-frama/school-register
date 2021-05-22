@@ -1,10 +1,18 @@
 <?php
 
+require_once SRC . '/utils.php';
+
 // Parse route.
 function execute_route() {
-    $request = $_SERVER['REQUEST_URI'];
+    $path = $_SERVER['PATH_INFO'];
+    $params = [];
+    if (isset($_SERVER['QUERY_STRING'])) {
+        $query = $_SERVER['QUERY_STRING'];
+        preg_match_all("/([^,=&]+)=([^,=&]+)/", $query, $r); 
+        $params = array_combine($r[1], $r[2]);
+    }
 
-    switch ($request) {
+    switch ($path) {
         case '' :
         case '/' :
             require __DIR__ . '/controllers/index.php';
