@@ -41,3 +41,7 @@ function from_number_to_ordinal($num)
             return '';
     }
 }
+
+function hash_password($password) {
+    return password_hash($password, PASSWORD_BCRYPT);
+}
