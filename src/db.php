@@ -60,13 +60,20 @@ function db_select_one($connection, $from, $where = [])
     return reset($result);
 }
 
-function find_logged_user_id($connection)
+function find_logged_user($connection)
 {
     $username = $_SESSION['username'];
     $user = db_select($connection, 'users', ['username' => $username]);
     $user = reset($user);
 
-    return $user ? $user['id'] : null;
+    return $user ? $user : null;
+}
+
+function find_student_class($connection, $user_id)
+{
+    $student = db_select_one($connection, 'students', ['student_id' => $user_id]);
+    $class = db_select_one($connection, 'students', ['student_id' => $user_id]);
+
 }
 
 function attendance_group_by_quarters($connection, $student_id, $quarter = null)
@@ -126,11 +133,11 @@ function find_all_marks($connection, $student_id) {
     return $result->fetch_all(MYSQLI_ASSOC);
 }
 
-function chat_message($connection, $user_id, $class_id, $text)
+function save_message_chat($connection, $user_id, $class_id, $text)
 {
     $stmt = mysqli_prepare($connection, 'INSERT INTO chat (user_id, class_id, text) VALUES (?, ?, ?)');
     mysqli_stmt_bind_param($stmt, 'iis', $user_id, $class_id, $text);
-    mysqli_stmt_execute($stmt);
+    return mysqli_stmt_execute($stmt);
 }
 
 

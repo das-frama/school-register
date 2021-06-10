@@ -63,12 +63,21 @@ function page_homework()
 
 function page_chat(array $params)
 {
-    // $conn = db_open();
+    $conn = db_open();
+
+    $user = find_logged_user($conn);
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $message = $_POST['message'];
+        $class_id = 
+        save_message_chat($conn, $user['id'], $user['class_id'], $message);
+    }
+
 
     // $user_id   = session_user_id();
     // $homeworks = find_all_homework($conn, $user_id);
-    // db_close($conn);
     
+    
+    db_close($conn);
 
     render_view('chat', ['chat' => []]);
 }

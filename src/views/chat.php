@@ -244,8 +244,10 @@ $title = 'Чат';
 
           <div class="flex-grow-0 py-3 px-4 border-top">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Type your message">
-              <button class="btn btn-primary">Отправить</button>
+              <form action="/chat" method="post">
+                <input type="text" class="form-control" placeholder="Введите ваше сообщение" name="message">
+                <button class="btn btn-primary" type="submit">Отправить</button>
+              </form>
             </div>
           </div>
 
